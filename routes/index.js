@@ -37,11 +37,12 @@ router.get("/findall",async (req,res)=>{
 router.get("/query",async (req,res)=>{
   // let user = await userModel.find({categories:{ $all: ['ejs']}});// for specific query or type like array search qualities and all that
   // let user = await userModel.find({categories:{ $exists:true}});  // all data that have categories will show for this input
- 
+// (frm loc 38and 39 categgeries search) 
+
   // var date1= new Date('2024-11-27');
   // var date2= new Date('2024-12-27');
   // let user = await userModel.find({datecreated:{$gte: date1,$lte:date2}});
-  // date quer $lte for less than equal to and same $gte as greater than equaal to 
+  // (frm LOC 41 to 44)date query $lte for less than equal to and same $gte as greater than equaal to 
  
  let user = await userModel.find({
     $expr:{
@@ -52,6 +53,7 @@ router.get("/query",async (req,res)=>{
       ]
     }
   })
+  // frm (LOC 47 to 56)numbers of letters query search
   res.send(user);
 });
 
