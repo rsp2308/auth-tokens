@@ -9,6 +9,7 @@ const flash = require("connect-flash")
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const passport = require('passport');
 
 var app = express();
 
@@ -21,7 +22,11 @@ app.use(expressSession({
   saveUninitialized: false,
   secret: "lodu lalit"
 }))
-
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(usersRouter.serializeUser());
+passport.deserializeUser(usersRouter.deserializeUser());
+// abv 3 lines are for passport session and serialize and deserialize user
 app.use(flash());
 
 app.use(logger('dev'));

@@ -9,7 +9,9 @@
 
 // module.exports = router;
 const mongoose = require("mongoose");
+const plm = require("passport-local-mongoose");
 mongoose.connect("mongodb://localhost:27017/express");
+
 const userSchema = mongoose.Schema({
   username:String,
   nickname:String,
@@ -24,4 +26,5 @@ const userSchema = mongoose.Schema({
     default:Date.now()
   }
 });
+userSchema.plugin(plm);
 module.exports = mongoose.model("user",userSchema);
